@@ -22,14 +22,7 @@
             border-radius: 5px;
             border: none;
             color: white;
-        }
-
-        .contrast-btn {
-            background-color: blue;
-        }
-
-        .tts-btn {
-            background-color: green;
+            background-color: #4B0082; /* Dark purple */
         }
     </style>
 </head>
@@ -46,7 +39,10 @@
 
             <!-- Accessibility Buttons -->
             <button class="button contrast-btn" onclick="toggleHighContrast()">Toggle High Contrast Mode</button>
-            <button class="button tts-btn" onclick="speakProposal()">Text to Speech</button>
+            <button class="button tts-btn" onclick="speakSection('intro')">Text to Speech: Web Accessibility</button>
+            <button class="button tts-btn" onclick="speakSection('first')">Text to Speech: Technology Adaptation</button>
+            <button class="button tts-btn" onclick="speakSection('second')">Text to Speech: Kalila</button>
+            <button class="button tts-btn" onclick="speakSection('cta')">Text to Speech: Data Analysis</button>
         </header>
 
         <!-- Nav -->
@@ -176,9 +172,9 @@
             document.body.classList.toggle('high-contrast');
         }
 
-        function speakProposal() {
-            const proposalText = document.getElementById('proposal-text').textContent;
-            const speech = new SpeechSynthesisUtterance(proposalText);
+        function speakSection(sectionId) {
+            const sectionText = document.getElementById(sectionId).textContent;
+            const speech = new SpeechSynthesisUtterance(sectionText);
             speech.lang = 'en-US';
             speech.rate = 1.0; // Adjust rate if needed (0.1 to 10)
             window.speechSynthesis.speak(speech);
