@@ -6,6 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        /* High Contrast Mode Styles */
+        .high-contrast {
+            background-color: black;
+            color: yellow;
+        }
+
+        /* Button Styles */
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            color: white;
+        }
+
+        .contrast-btn {
+            background-color: blue;
+        }
+
+        .tts-btn {
+            background-color: green;
+        }
+    </style>
 </head>
 <body class="is-preload">
 
@@ -17,6 +43,10 @@
             <span class="logo"><img src="images/logo.svg" alt="Project Logo" /></span>
             <h1>Code and Power Group 3</h1>
             <p>Individual And Group Proposal For Wisconsin Maritime Museum</p>
+
+            <!-- Accessibility Buttons -->
+            <button class="button contrast-btn" onclick="toggleHighContrast()">Toggle High Contrast Mode</button>
+            <button class="button tts-btn" onclick="speakProposal()">Text to Speech</button>
         </header>
 
         <!-- Nav -->
@@ -39,9 +69,9 @@
                         <header class="major">
                             <h2>Web Accessibility</h2>
                         </header>
-                        <p> 
-
-This proposal aims to establish a comprehensive strategy for implementing accessible web development practices at the Wisconsin Maritime Museum, with a particular focus on the individual proposal's emphasis on web accessibility. The primary objective is to create a digital environment that meets WCAG 2.0 or 2.1 AA standards, ensuring inclusivity for all users. The individual proposal will delve into specific accessibility challenges and propose tailored solutions to enhance the museum's digital presence. By focusing on inclusive design, ongoing accessibility monitoring, and addressing individual accessibility needs, the museum can offer an equitable and engaging experience for all visitors. This approach not only elevates the museum's commitment to accessibility but also sets a new industry standard, demonstrating the vital role of web accessibility in public engagement within the museum sector. </p>
+                        <p id="proposal-text"> 
+                            This proposal aims to establish a comprehensive strategy for implementing accessible web development practices at the Wisconsin Maritime Museum, with a particular focus on the individual proposal's emphasis on web accessibility. The primary objective is to create a digital environment that meets WCAG 2.0 or 2.1 AA standards, ensuring inclusivity for all users. The individual proposal will delve into specific accessibility challenges and propose tailored solutions to enhance the museum's digital presence. By focusing on inclusive design, ongoing accessibility monitoring, and addressing individual accessibility needs, the museum can offer an equitable and engaging experience for all visitors. This approach not only elevates the museum's commitment to accessibility but also sets a new industry standard, demonstrating the vital role of web accessibility in public engagement within the museum sector.
+                        </p>
                         <ul class="actions">
                            <li><a href="Untitleddocument.html" class="button">Learn More</a></li>
                         </ul>
@@ -60,9 +90,6 @@ This proposal aims to establish a comprehensive strategy for implementing access
                         <span class="icon solid major style1 fa-code"></span>
                         <h3>Power Dynamics in Code</h3>
                         <p>This section explores how code can embed and reinforce societal power structures, impacting access and control in digital environments.</p>
-                    </li>
-            
-                    
                     </li>
                 </ul>
                 <footer class="major">
@@ -104,7 +131,6 @@ This proposal aims to establish a comprehensive strategy for implementing access
                 <footer class="major">
                     <ul class="actions special">
                       <li><a href="#cta" class="button">More Info</a></li>
-
                     </ul>
                 </footer>
             </section>
@@ -145,6 +171,19 @@ This proposal aims to establish a comprehensive strategy for implementing access
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        function speakProposal() {
+            const proposalText = document.getElementById('proposal-text').textContent;
+            const speech = new SpeechSynthesisUtterance(proposalText);
+            speech.lang = 'en-US';
+            speech.rate = 1.0; // Adjust rate if needed (0.1 to 10)
+            window.speechSynthesis.speak(speech);
+        }
+    </script>
 
 </body>
 </html>
